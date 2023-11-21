@@ -4,6 +4,11 @@ from filters import Blurring, Inverse, Edges, Noise, Dirt
 pic = None
 
 
+def filtered_img():
+    global pic
+    pic = pic
+
+
 # проверка введенного пути. Сделано без os, т.к она проверяет лишь наличие файла, а не его содержимое.
 def to_path():
     while True:
@@ -76,7 +81,14 @@ def menu():
         else:
             pic.save(saving)
             break
-    ask = input('Еще?\n').lower()
+    ask = input('Еще? (Да/Нет) или (1 - если не хотите менять изоображение\n'
+                '                   2 - если хотите применить фильтр '
+                'к только что отфильтрованному изображению)\n').lower()
+    if ask == '1':
+        menu()
+    if ask == '2':
+        filtered_img()
+        menu()
     while ask not in ['да', 'нет', 'lf', 'ytn']:
         print('Нет такого ответа.')
         ask = input('Еще?\n').lower()
