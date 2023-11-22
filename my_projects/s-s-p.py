@@ -6,7 +6,9 @@ import time
 def cef():
     # пол пользователя
     ending = ''
-    gender = input('Твой пол:\n').lower()
+    gender = input('Твой пол (0 - для выхода):\n').lower()
+    if gender == '0':
+        quit("Удачи!")
     while (gender != 'мужской' and gender != 'муж' and gender != 'м' and
            gender != 'женский' and gender != 'жен' and gender != 'ж'):
         print('Пол введен неверно.')
